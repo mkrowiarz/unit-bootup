@@ -28,7 +28,6 @@ cp .p10k.zsh ~/.p10k.zsh
 # Install Google Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
-rm google-chrome-stable_current_amd64.deb
 
 # Install 
 sudo add-apt-repository --yes ppa:graphics-drivers/ppa && sudo dpkg --add-architecture i386 && sudo apt update && sudo apt install -y nvidia-driver-525 libvulkan1 libvulkan1:i386
@@ -39,10 +38,19 @@ sudo add-apt-repository --yes ppa:kisak/kisak-mesa && sudo apt update && sudo ap
 # Docker stuff
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
-rm get-docker.sh
 
 # Install Taskfile
 sudo sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin
 
-rm slack-desktop-4.29.149-amd64.deb
-sudo apt autoremove -y
+# Install Jetbrains Toolbox
+curl -fsSL https://raw.githubusercontent.com/nagygergo/jetbrains-toolbox-install/master/jetbrains-toolbox.sh | bash
+
+# Cleanup 
+rm google-chrome-stable_current_amd64.deb get-docker.sh slack-desktop-4.29.149-amd64.deb
+
+# Info for the user
+echo ""
+echo "EXECUTE THOSE COMMANDS AFTER REBOOT:"
+echo ""
+echo "sudo groupadd docker"
+echo "sudo usermod -aG docker $USER"
