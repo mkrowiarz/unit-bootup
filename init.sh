@@ -1,5 +1,5 @@
 # Initialize all the essentials
-sudo apt install -y python3-pip zsh htop git curl tldr ca-certificates curl gnupg lsb-release libfuse2 tilix wget
+sudo apt install -y python3-pip zsh htop git curl tldr ca-certificates curl gnupg lsb-release libfuse2 tilix wget vim
 
 # Set ZSH as default shell
 sudo usermod -s /usr/bin/zsh $(whoami)
@@ -29,6 +29,10 @@ cp .p10k.zsh ~/.p10k.zsh
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 
+# VSCode
+wget -O vscode.deb  https://go.microsoft.com/fwlink/\?LinkID\=760868
+sudo apt install ./vscode.deb
+
 # Install 
 sudo add-apt-repository --yes ppa:graphics-drivers/ppa && sudo dpkg --add-architecture i386 && sudo apt update && sudo apt install -y nvidia-driver-525 libvulkan1 libvulkan1:i386
 
@@ -46,7 +50,7 @@ sudo sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/lo
 curl -fsSL https://raw.githubusercontent.com/nagygergo/jetbrains-toolbox-install/master/jetbrains-toolbox.sh | bash
 
 # Cleanup 
-rm google-chrome-stable_current_amd64.deb get-docker.sh slack-desktop-4.29.149-amd64.deb
+rm google-chrome-stable_current_amd64.deb get-docker.sh slack-desktop-4.29.149-amd64.deb vscode.deb
 
 # Info for the user
 echo ""
